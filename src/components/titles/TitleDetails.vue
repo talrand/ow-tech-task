@@ -3,6 +3,7 @@ import { onMounted, ref, computed } from 'vue';
 import { useTitlesStore } from '../../stores/TitlesStore';
 import { Title } from '../../types/Title';
 import Map from '../ui/Map.vue';
+import Tag from '../ui/Tag.vue';
 
 const titlesStore = useTitlesStore();
 const title = ref<Title>();
@@ -21,8 +22,11 @@ const props = defineProps({
 </script>
 <template>
   <div v-if="title" class="flex flex-col w-full items-center sm:flex-row sm:space-x-3 sm:items-start">
-    <div class="flex flex-col md:w-1/2">
-      <div class="font-bold text-lg mb-2">{{ title['Title Number'] }}</div>
+    <div class="flex flex-col md:w-1/2 space-y-2 mb-4 sm:mb-0">
+      <div class="flex flex-row w-full items-center">
+        <span class="font-bold text-lg">{{ title['Title Number'] }}</span>
+        <Tag :text="title.Tenure" class="ml-3"></Tag>
+      </div>
       <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt placerat pulvinar. 
         Quisque fringilla felis et sapien bibendum, maximus pharetra neque lobortis. Vivamus quis ultrices nibh. 
         Integer aliquam vel velit a pharetra.</div> 
