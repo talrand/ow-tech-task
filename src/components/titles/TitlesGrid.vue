@@ -6,7 +6,7 @@ import { RouteNames } from '../../router/RouteNames';
 import { SortDirection } from '../../types/SortDirection';
 import { Title } from '../../types/Title';
 import { TitleSort } from '../../types/TitleSort';
-import router from '../../router';
+import { useRouter } from 'vue-router';
 import GridHeader from '../ui/GridHeader.vue';
 import Pagination from '../ui/Pagination.vue';
 
@@ -60,6 +60,7 @@ onMounted(() => {
     });
 });
 
+const router = useRouter();
 const loaded = ref(false);
 const currentPageNumber = ref(1);
 
@@ -108,7 +109,6 @@ const sortedData = computed(() => {
 
 const onRowClick = async (title: Title) => {
     await router.push({ name: RouteNames.TitleDetails, params: { titleId: title['Title Number'] } })
-    router.go(0);
 }
 
 watch(() => currentPageNumber.value, async () => {  

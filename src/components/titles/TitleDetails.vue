@@ -22,13 +22,14 @@ const props = defineProps({
 <template>
   <div v-if="title" class="flex flex-col w-full items-center sm:flex-row sm:space-x-3 sm:items-start">
     <div class="flex flex-col md:w-1/2">
-      <span class="font-bold text-lg mb-2">{{ title['Title Number'] }}</span>
-      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt placerat pulvinar. 
+      <div class="font-bold text-lg mb-2">{{ title['Title Number'] }}</div>
+      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt placerat pulvinar. 
         Quisque fringilla felis et sapien bibendum, maximus pharetra neque lobortis. Vivamus quis ultrices nibh. 
-        Integer aliquam vel velit a pharetra. Proin nibh nunc, ornare non risus nec, volutpat rhoncus tellus. 
+        Integer aliquam vel velit a pharetra.</div> 
+       <div>Proin nibh nunc, ornare non risus nec, volutpat rhoncus tellus. 
         Suspendisse potenti. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
         Morbi id dapibus tortor. In sodales facilisis risus at euismod. Maecenas mollis ornare sem eu consequat. 
-        Ut semper mattis erat a tincidunt. Nulla interdum in lacus sit amet mattis.</span>
+        Ut semper mattis erat a tincidunt. Nulla interdum in lacus sit amet mattis.</div>
     </div>
     <div class="w-full md:w-[400px] min-w-[400px]">
       <Map :latitude="title.Y" :longitude="title.X"></Map>
