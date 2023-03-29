@@ -12,7 +12,7 @@ npm install
 Add .env file to root for Google Maps API and your Google Api key
 
 ```
-VITE_GOOGLE_MAPS_API=
+VITE_GOOGLE_MAPS_API_KEY
 ```
 
 Run app for Development
