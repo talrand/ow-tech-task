@@ -165,7 +165,7 @@ const updateRoute = async () => {
 
 </script>
 <template>
-    <div class="flex flex-col w-full max-w-[500px]" v-if="loaded">
+    <div class="flex flex-col w-full max-w-[500px]">
         <table class="table-fixed border border-1 border-300-gray mb-2 w-full" cellpadding="5px">
             <thead class="bg-gray-300 w-30">
                 <tr>
