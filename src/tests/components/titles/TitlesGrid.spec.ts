@@ -1,9 +1,11 @@
-import { shallowMount } from "@vue/test-utils";
+import { mount, shallowMount } from "@vue/test-utils";
 import { test, expect, describe } from "vitest";
 import { Title } from "../../../types/Title";
 import { TitleSort } from "../../../types/TitleSort";
 import { SortDirection } from "../../../types/SortDirection";
 import TitlesGrid from "../../../components/titles/TitlesGrid.vue";
+import GridHeader from "../../../components/ui/GridHeader.vue";
+import Pagination from "../../../components/ui/Pagination.vue";
 
 const testData: Title[] = [
     {
@@ -47,15 +49,29 @@ const config = {
     propsData: {
         titles: testData,
         resultsPerPage: 3,
-        defaultSort: TitleSort.TitleNumber,
-        defaultSortDirection: SortDirection.Ascending,
-        defaultPage: 2
+        defaultSort: TitleSort.None,
+        defaultSortDirection: SortDirection.None,
+        defaultPage: 1
     }
 }
 
 describe('TitlesGrid', () => {
-    test('Tests correct details are passed', () => {
+    test('Tests components are rendered correctly', () => {
+        const wrapper = mount(TitlesGrid, config);
+
+        expect(wrapper.findAllComponents(GridHeader)).toHaveLength(2);
+        expect(wrapper.findComponent(Pagination).exists()).toBeTruthy();
+        expect(wrapper.find('table').exists()).toBeTruthy();
+    });
+
+    test('Tests correct details are displayed for current page', () => {
         const wrapper = shallowMount(TitlesGrid, config);
+
         expect(wrapper.vm.titles).toEqual(testData);
+        
+        for(let i = config.propsData.defaultPage - 1; i < config.propsData.resultsPerPage; i++) {
+            expect(wrapper.text()).toContain(testData[i]["Title Number"]);
+            expect(wrapper.text()).toContain(testData[i].Tenure);
+        }
     });
 });
