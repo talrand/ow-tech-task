@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/** Text to display in tag */
 const props = defineProps({
     text: {
         type: String,
