@@ -5,10 +5,12 @@ import ChevronDownIcon from '../icons/ChevronDownIcon.vue';
 import ChevronUpIcon from '../icons/ChevronUpIcon.vue';
 
 const props = defineProps({
+    /** Text to display in the Grid Header */
     text: {
         type: String,
         required: true
     },
+    /** Current sort direction for the Grid Header */
     modelValue: {
         type: Number as PropType<SortDirection>,
         required: true
