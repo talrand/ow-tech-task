@@ -3,14 +3,17 @@ import { computed } from 'vue';
 import Button from './Button.vue';
 
 const props = defineProps({
+    /** Current page number */
     modelValue: {
         type: Number,
         required: true
     },
+    /** Total number of results */
     totalResults: {
         type: Number,
         required: true
     },
+    /** Number of results to be displayed per page */
     resultsPerPage: {
         type: Number,
         required: true
