@@ -1,24 +1,39 @@
-import { render, screen } from "@testing-library/vue";
-import { mount, shallowMount } from "@vue/test-utils";
-import { test, expect } from "vitest";
+import { shallowMount } from "@vue/test-utils";
+import { test, expect, describe } from "vitest";
 import Button from '../../../components/ui/Button.vue';
 
-test("Tests button isn't clickable when disabled", async () => {
-  const wrapper = shallowMount(Button);
-  await wrapper.setProps({
-    text: 'Test',
-    disabled: true 
+describe('Button', () => {
+  test("Tests button isn't clickable when disabled", () => {
+    const wrapper = shallowMount(Button, {
+      propsData: {
+        text: 'Test',
+        disabled: true 
+      }
+    });
+
+    expect(wrapper.vm.disabled).toBeTruthy();
+    expect(wrapper.classes()).toContain('cursor-not-allowed');
   });
-
-  expect(wrapper.classes()).toContain('cursor-not-allowed');
-})
-
-test("Tests button displays the correct text", async () => {
-  render(Button, {
-    props: {
-      text: 'Test Button'
-    }
+  
+  test("Tests button displays the correct text", () => {
+    const wrapper = shallowMount(Button, {
+      propsData: {
+        text: 'Click Me'
+      }
+    });
+  
+    expect(wrapper.vm.text).toBe('Click Me');
+    expect(wrapper.text()).toContain('Click Me');
   });
-
-  expect(screen.queryByText('Test Button')).toBeTruthy()
+  
+  test('Tests button emits click when clicked', () => {
+    const wrapper = shallowMount(Button, {
+      propsData: {
+        text: 'Click Me'
+      }
+    });
+ 
+    wrapper.find('button').trigger('click'); 
+    expect(wrapper.emitted()['click']).toBeTruthy();
+  });
 });
