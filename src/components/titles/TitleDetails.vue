@@ -30,6 +30,7 @@ const onBackClick = () => {
           <span class="font-bold text-lg">{{ title['Title Number'] }}</span>
           <Tag :text="title.Tenure" class="ml-3"></Tag>
         </div>
+        <div class="font-bold">{{ title['Property Address'] }}</div>
         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt placerat pulvinar.
           Quisque fringilla felis et sapien bibendum, maximus pharetra neque lobortis. Vivamus quis ultrices nibh.
           Integer aliquam vel velit a pharetra.</div>
