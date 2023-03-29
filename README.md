@@ -9,7 +9,7 @@ Install npm packages
 npm install
 ```
 
-Add .env file to root for Google Maps API and insert key provided
+Add .env file to root for Google Maps API and your Google Api key
 
 ```
 VITE_GOOGLE_MAPS_API=
