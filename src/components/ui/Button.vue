@@ -2,6 +2,7 @@
 
 
 const props = defineProps({
+    /** Text to display on the button */
     text: {
         type: String,
         required: true
