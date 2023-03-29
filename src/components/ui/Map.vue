@@ -3,19 +3,21 @@ import { computed } from 'vue';
 import { GoogleMap, Marker } from 'vue3-google-map'
 
 const props = defineProps({
+    /** Latitude for map pointer */
     latitude: {
         type: Number,
         required: true
     },
+    /** Longitude for map pointer */
     longitude: {
         type: Number,
         required: true
     }
-})
+});
 
 const center = computed(() => {
     return { lat: props.latitude, lng: props.longitude }
-})
+});
 
 const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
